@@ -12,11 +12,28 @@ int main()
 
         int n,k;
         cin >> n >> k;
-        vector<int> a(n);
+
+        int w;
+        long long cost=0;
+        vector<int> remc(k,0);  // remainder count
+
         for (int i=0; i<n; i++){
-            cin >> a[i];
+            cin >> w;
+            cost += w/k;
+            remc[w%k]++;
         }
-        
+
+        int l=1,r=k-1;
+        while (l<r || (l==r && remc[l]>1)){
+            while (remc[r]==0 && l<r) {r--; l=max(l,k-r);}
+            while (remc[l]==0 && l<r) {l++;}
+            if (l<r || (l==r && remc[l]>1)){
+                remc[r]--;
+                remc[l]--;
+                cost++; 
+            } 
+        }
+        cout << cost << "\n";
 
     }
     return 0;
