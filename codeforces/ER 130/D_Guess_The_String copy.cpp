@@ -33,23 +33,22 @@ void solve()
     string s="";
 
     vi prev;
-    s += q1(0);
-    prev.push_back(0);
-
-    for (int i = 1; i < n; i++){
-        int bla = -1;
-        int p = prev.size();
-        for (int b=p/2; b>=1; b/=2){
-            while (bla+b<p && q2(prev[bla+b],i)<(p-(bla+b)-1)) bla+=b;
+    for (int i = 0; i < n; i++){
+        if (prev.empty() ? true : q2(prev.front(),i)==prev.size()+1){      // new char
+            s += q1(i);
+            prev.push_back(i);
         }
-        if (bla==-1){
-            s+=q1(i);
+        else{       // prev char
+            int j=0;
+            int p=prev.size();
+            // binary search new style
+            for (int b=p/2; b>=1; b/=2){
+                while ( j+b<p && q2(prev[j+b],i)!=(p+1-(j+b)) ) j+=b;
+            }   
+            s += s[prev[j]];
+            prev.erase(prev.begin()+j);
+            prev.push_back(i);
         }
-        else{
-            s+=s[prev[bla]];
-            prev.erase(prev.begin()+bla);
-        }
-        prev.push_back(i);
     }
 
     cout << "! " << s << endl << flush;
