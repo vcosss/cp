@@ -7,25 +7,25 @@ using namespace __gnu_pbds;
 typedef tree<int,null_type,less<int>,rb_tree_tag, tree_order_statistics_node_update> indexed_set;
 typedef long long ll;
 typedef vector<int> vi;
-typedef vector<bool> vb;
 typedef vector <long long> vll;
 typedef vector <double> vd;
-typedef pair<int,int> pii;
+typedef pair<int,int> pi;
 typedef map<int,int> mii;
-typedef map<int,bool> mib;
 typedef map<char,int> mci;
 
 #define int long long
 
+bool palin(string x){
+    if (x[0]==x[4] && x[1]==x[3]) return true;
+    else return false;
+}
+
 void solve()
 {
-    int n; cin >> n;
-    vi x(n);
-    for (int i=0; i<n; i++) cin >> x[i];
+    string time;
+    int x;
+    cin >> time >> x;
     
-    
-
-
 }
 
 int32_t main()
