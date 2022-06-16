@@ -39,7 +39,7 @@ void solve()
     for (int i = 1; i < n; i++){
         int bla = -1;
         int p = prev.size();
-        for (int b=max(p/2,1LL); b>=1; b/=2){
+        for (int b=p/2; b>=1; b/=2){
             while (bla+b<p && q2(prev[bla+b],i)<(p-(bla+b)+1)) bla+=b;
         }
         if (bla==-1){
